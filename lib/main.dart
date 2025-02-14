@@ -123,7 +123,7 @@ class _QRViewExampleState extends State<QRViewExample> {
             _showDangerDialog(maliciousCount, suspiciousCount);
           } else {
             // Tampilkan hasil pemindaian (aman)
-            _showScanResultDialog(scanResult as Map<String, dynamic>, url);
+            _showScanResultDialog(scanResult as Map<String, dynamic>, url, maliciousCount, suspiciousCount);
           }
         }
       } else {
@@ -156,7 +156,7 @@ class _QRViewExampleState extends State<QRViewExample> {
   }
 
   // Fungsi untuk menampilkan hasil pemindaian (aman) dengan tombol buka link
-  void _showScanResultDialog(Map<String, dynamic> scanResult, String url) {
+  void _showScanResultDialog(Map<String, dynamic> scanResult, String url,int maliciousCount, int suspiciousCount) {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
@@ -166,8 +166,11 @@ class _QRViewExampleState extends State<QRViewExample> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('Hasil analisis VirusTotal:'),
-            for (var entry in scanResult.entries)
-              Text('${entry.key}: ${entry.value}'),
+            Text('Tautan ini terdeteksi berbahaya atau mencurigakan.\n'
+                'Jumlah Berbahaya: $maliciousCount\n'
+                'Jumlah Mencurigakan: $suspiciousCount'),
+            // for (var entry in scanResult.entries)
+            //   Text('${entry.key}: ${entry.value}'),
           ],
         ),
         actions: <Widget>[
