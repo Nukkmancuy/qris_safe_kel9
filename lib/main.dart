@@ -139,7 +139,8 @@ class _QRViewExampleState extends State<QRViewExample> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Peringatan!'),
+        title: const Text('Link/Url Website Berbahaya!', style:
+        TextStyle(color: Colors.red,fontSize: 20.0, fontWeight: FontWeight.bold)),
         content: Text('Tautan ini terdeteksi berbahaya atau mencurigakan.\n'
             'Jumlah Berbahaya: $maliciousCount\n'
             'Jumlah Mencurigakan: $suspiciousCount'),
@@ -166,7 +167,7 @@ class _QRViewExampleState extends State<QRViewExample> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('Hasil analisis VirusTotal:'),
-            Text('Tautan ini terdeteksi berbahaya atau mencurigakan.\n'
+            Text('Tautan ini tidak terdeteksi berbahaya atau mencurigakan.\n'
                 'Jumlah Berbahaya: $maliciousCount\n'
                 'Jumlah Mencurigakan: $suspiciousCount'),
             // for (var entry in scanResult.entries)
